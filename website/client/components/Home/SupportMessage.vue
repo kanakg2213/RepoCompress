@@ -1,27 +1,15 @@
 <script setup lang="ts">
-import { Star } from 'lucide-vue-next';
 import { computed, ref } from 'vue';
 
-const messages = [
-  // {
-  //   type: 'sponsor',
-  //   link: 'https://github.com/sponsors/yamadashy',
-  //   icon: HeartHandshake,
-  //   linkText: 'Become a sponsor',
-  //   suffix: ' to support Repomix development',
-  //   color: '#b04386',
-  // },
-  {
-    type: 'star',
-    link: 'https://github.com/yamadashy/repomix',
-    icon: Star,
-    linkText: 'Star this project',
-    suffix: ' if you find it useful!',
-    color: '#f1c40f',
-  },
-];
+const messages = [{
+  type: 'info',
+  link: '#help',
+  linkText: 'Need help?',
+  suffix: ' review the workflow guidance below.',
+  color: '#d9572b',
+}];
 
-const currentMessageIndex = ref(Math.floor(Math.random() * messages.length));
+const currentMessageIndex = ref(0);
 const supportMessage = computed(() => messages[currentMessageIndex.value]);
 </script>
 

@@ -1,24 +1,21 @@
-<script setup>
-import { useData } from 'vitepress';
-
-const { site } = useData();
-</script>
+<script setup></script>
 
 <template>
   <section class="hero" aria-labelledby="home-title">
     <div class="hero-copy">
-      <p class="hero-kicker"><span class="hero-kicker__dot"></span> Open-source context engineering</p>
-      <h1 id="home-title" class="hero-title">{{ site.title }}<span class="hero-title__mark">/</span></h1>
+      <p class="hero-kicker"><span class="hero-kicker__dot"></span> Academic developer tooling</p>
+      <h1 id="home-title" class="hero-title">CODE<span>COMPRESS</span></h1>
       <p class="hero-description">
-        Pack your codebase into <span class="hero-description__accent">AI-friendly</span> formats.
+        AI-Focused Source Code Compression<br />
+        <span class="hero-description__accent">and Repository Packaging</span>
       </p>
-      <p class="hero-note">One clean file. Your whole repository. Ready for the next intelligent tool.</p>
+      <p class="hero-note">Transform a software repository into a compact, structured, AI-ready context package for source analysis.</p>
     </div>
     <div class="hero-art" aria-hidden="true">
-      <div class="hero-art__topline"><span>repomix-output.xml</span><span>ready</span></div>
+      <div class="hero-art__topline"><span>codecompress.context</span><span>ready</span></div>
       <div class="hero-art__body">
         <span class="hero-art__prompt">&gt;</span>
-        <span class="hero-art__command">repomix</span>
+        <span class="hero-art__command">compress --analyze</span>
         <span class="hero-art__cursor"></span>
       </div>
       <div class="hero-art__files">
@@ -105,9 +102,9 @@ const { site } = useData();
 
 .hero-art {
   overflow: hidden;
-  border: 1px solid var(--vp-c-text-1);
+  border: 1px solid var(--cc-ink);
   border-radius: 4px;
-  background: var(--vp-c-text-1);
+  background: var(--cc-ink);
   color: #f9f4e9;
   box-shadow: 10px 10px 0 var(--vp-c-brand-1);
   animation: hero-rise 0.7s 0.12s ease both;
@@ -125,7 +122,7 @@ const { site } = useData();
 }
 
 .hero-art__topline span:last-child {
-  color: var(--repomix-lime);
+  color: var(--cc-lime);
 }
 
 .hero-art__body {
@@ -139,7 +136,7 @@ const { site } = useData();
 }
 
 .hero-art__prompt {
-  color: var(--repomix-lime);
+  color: var(--cc-lime);
 }
 
 .hero-art__command {
@@ -149,7 +146,7 @@ const { site } = useData();
 .hero-art__cursor {
   width: 9px;
   height: 24px;
-  background: var(--repomix-orange);
+  background: var(--cc-orange);
   animation: blink 1s steps(2) infinite;
 }
 
@@ -161,7 +158,7 @@ const { site } = useData();
 }
 
 .hero-art__files strong {
-  color: var(--repomix-lime);
+  color: var(--cc-lime);
   font-weight: 400;
 }
 

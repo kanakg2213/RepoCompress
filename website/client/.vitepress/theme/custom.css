@@ -1,30 +1,32 @@
 :root {
   --vp-c-danger: #c0392b;
-  --repomix-ink: #1d211f;
-  --repomix-muted: #59605b;
-  --repomix-paper: #fbfaf7;
-  --repomix-line: #dedbd3;
-  --repomix-orange: #d9572b;
-  --repomix-lime: #b7ce63;
+  --cc-ink: #1d211f;
+  --cc-muted: #59605b;
+  --cc-paper: #fbfaf7;
+  --cc-line: #dedbd3;
+  --cc-orange: #d9572b;
+  --cc-lime: #b7ce63;
+  --cc-panel: rgba(255, 255, 255, 0.62);
 }
 
 html.dark {
-  --repomix-ink: #f4f0e7;
-  --repomix-muted: #b4bbb3;
-  --repomix-paper: #151817;
-  --repomix-line: #3b443e;
-  --repomix-orange: #f07847;
-  --repomix-lime: #c9df76;
+  --cc-ink: #f4f0e7;
+  --cc-muted: #b4bbb3;
+  --cc-paper: #151817;
+  --cc-line: #3b443e;
+  --cc-orange: #f07847;
+  --cc-lime: #c9df76;
+  --cc-panel: rgba(32, 37, 34, 0.72);
 }
 
 html {
-  background: var(--repomix-paper);
+  background: var(--cc-paper);
 }
 
 body {
   font-family: 'Avenir Next', 'Helvetica Neue', sans-serif;
-  color: var(--repomix-ink);
-  background-color: var(--repomix-paper);
+  color: var(--cc-ink);
+  background-color: var(--cc-paper);
   background-image: linear-gradient(rgba(29, 33, 31, 0.035) 1px, transparent 1px),
     linear-gradient(90deg, rgba(29, 33, 31, 0.035) 1px, transparent 1px);
   background-size: 32px 32px;
@@ -45,7 +47,7 @@ html.dark .VPNav {
 }
 
 .VPNavBar {
-  border-bottom: 1px solid var(--repomix-line);
+  border-bottom: 1px solid var(--cc-line);
 }
 
 .VPNavBarTitle .title {
@@ -69,20 +71,8 @@ html.dark .VPNav {
   box-shadow: 2px 2px 0 var(--repomix-ink);
 }
 
-.VPHome .VPHero {
-  padding-bottom: 40px;
-}
-
-.VPHome .VPHero .name {
-  letter-spacing: -0.06em;
-}
-
-.VPHome .VPHero .tagline {
-  color: var(--repomix-muted);
-}
-
 .VPHome .VPFeature {
-  border: 1px solid var(--repomix-line);
+  border: 1px solid var(--cc-line);
   border-radius: 4px;
   background: rgba(255, 255, 255, 0.52);
   box-shadow: 4px 4px 0 rgba(29, 33, 31, 0.08);
@@ -94,7 +84,7 @@ html.dark .VPHome .VPFeature {
 }
 
 .VPHome .VPFeature:hover {
-  border-color: var(--repomix-orange);
+  border-color: var(--cc-orange);
   transform: translateY(-3px);
 }
 
@@ -113,6 +103,11 @@ html.dark .VPHome .VPFeature {
   order: 1;
 }
 
+.VPNavBar .translations,
+.VPNavBarTranslations {
+  display: none !important;
+}
+
 .hero-description__accent {
   color: var(--vp-c-brand-1);
 }
@@ -128,7 +123,7 @@ html.dark .VPHome .VPFeature {
   font-weight: 600;
   line-height: 38px;
   margin-bottom: 1.5rem;
-  color: var(--repomix-ink);
+  color: var(--cc-ink);
   background: none;
   -webkit-background-clip: text;
   -webkit-text-fill-color: currentColor;

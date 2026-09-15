@@ -2,15 +2,12 @@ import { defineConfig } from 'vitepress';
 
 export const configEnUs = defineConfig({
   lang: 'en-US',
-  description: 'Pack your codebase into AI-friendly formats',
+  description: 'CodeCompress prepares software repositories for efficient AI-assisted source code analysis.',
   themeConfig: {
     nav: [
-      { text: 'Guide', link: '/guide/', activeMatch: '^/guide/' },
-      {
-        text: 'Chrome Extension',
-        link: 'https://chromewebstore.google.com/detail/repomix/fimfamikepjgchehkohedilpdigcpkoa',
-      },
-      { text: 'Join Discord', link: 'https://discord.gg/wNYzTwZFku' },
+      { text: 'About', link: '/#about-codecompress' },
+      { text: 'Documentation', link: '/#how-it-works' },
+      { text: 'Help', link: '/#help' },
     ],
     sidebar: {
       '/guide/': [

@@ -2,27 +2,12 @@ import { visualizer } from 'rollup-plugin-visualizer';
 import { type ManifestOptions, VitePWA } from 'vite-plugin-pwa';
 import { defineConfig, type HeadConfig } from 'vitepress';
 import llmstxt from 'vitepress-plugin-llms';
-import { configDeSearch } from './configDe';
-import { configEsSearch } from './configEs';
-import { configHiSearch } from './configHi';
-import { configIdSearch } from './configId';
-import { configItSearch } from './configIt';
-import { configJaSearch } from './configJa';
-import { configKoSearch } from './configKo';
-import { configPtBrSearch } from './configPtBr';
-import { configRuSearch } from './configRu';
-import { configTrSearch } from './configTr';
-import { configViSearch } from './configVi';
-import { configZhCnSearch } from './configZhCn';
-import { configZhTwSearch } from './configZhTw';
 
 // Site Metadata
-const siteName = 'Repomix';
-const siteUrl = 'https://repomix.com';
-const siteDescription = 'Pack your codebase into AI-friendly formats';
-const ogImageUrl = `${siteUrl}/images/og-image-large.png`;
-const githubUrl = 'https://github.com/yamadashy/repomix';
-const npmUrl = 'https://www.npmjs.com/package/repomix';
+const siteName = 'CodeCompress';
+const siteUrl = 'https://codecompress.example.com';
+const siteDescription = 'CodeCompress prepares software repositories for efficient AI-assisted source code analysis.';
+const githubUrl = 'https://github.com/kanakg2213/RepoCompress';
 
 // Stable @id for the global WebSite node so per-page schemas (e.g. TechArticle.isPartOf)
 // can reference it via `@id` instead of inlining a fresh node, which Google treats
@@ -32,12 +17,9 @@ const websiteId = `${siteUrl}#website`;
 // Shared author block used by both the global SoftwareApplication JSON-LD and the
 // per-page TechArticle JSON-LD.
 const siteAuthor = {
-  '@type': 'Person' as const,
-  name: 'Kazuki Yamada',
-  url: 'https://github.com/yamadashy',
+  '@type': 'Organization' as const,
+  name: 'CodeCompress Academic Project',
 };
-
-const googleAnalyticsTag = 'G-7PTT4PLC69';
 
 type PageHeadContext = {
   page: string;
@@ -157,7 +139,6 @@ const createPageHead = ({ page, title, description, pageData }: PageHeadContext)
       inLanguage: localeConfig[locale].bcp47,
       isPartOf: { '@id': websiteId },
       mainEntityOfPage: { '@type': 'WebPage', '@id': url },
-      image: ogImageUrl,
       author: siteAuthor,
     };
     tags.push(['script', { type: 'application/ld+json' }, JSON.stringify(articleJsonLd)]);
@@ -192,13 +173,9 @@ const jsonLd = {
       },
       license: 'https://opensource.org/licenses/MIT',
       isAccessibleForFree: true,
-      installUrl: npmUrl,
-      downloadUrl: npmUrl,
       softwareRequirements: 'Node.js 22.0.0 or higher',
-      image: `${siteUrl}/images/repomix-logo.svg`,
-      screenshot: ogImageUrl,
       author: siteAuthor,
-      sameAs: [githubUrl, npmUrl],
+      sameAs: [githubUrl],
       featureList: [
         'AI-optimized output formats (XML, Markdown, JSON, Plain Text)',
         'Token counting for LLM context limits',
@@ -220,24 +197,6 @@ const manifest: Partial<ManifestOptions> = {
   theme_color: '#f97316',
   background_color: '#ffffff',
   display: 'standalone',
-  icons: [
-    {
-      src: '/images/pwa/repomix-192x192.png',
-      sizes: '192x192',
-      type: 'image/png',
-    },
-    {
-      src: '/images/pwa/repomix-512x512.png',
-      sizes: '512x512',
-      type: 'image/png',
-    },
-    {
-      src: '/images/pwa/repomix-512x512.png',
-      sizes: '512x512',
-      type: 'image/png',
-      purpose: 'any maskable',
-    },
-  ],
 };
 
 export const configShard = defineConfig({
@@ -271,47 +230,23 @@ export const configShard = defineConfig({
 
   // Shared configuration
   themeConfig: {
-    logo: { src: '/images/repomix-logo.svg', width: 24, height: 24 },
-    search: {
-      provider: 'local',
-      options: {
-        locales: {
-          ...configDeSearch,
-          ...configEsSearch,
-          ...configHiSearch,
-          ...configIdSearch,
-          ...configItSearch,
-          ...configJaSearch,
-          ...configKoSearch,
-          ...configPtBrSearch,
-          ...configRuSearch,
-          ...configTrSearch,
-          ...configViSearch,
-          ...configZhCnSearch,
-          ...configZhTwSearch,
-        },
-      },
-    },
-    socialLinks: [
-      { icon: 'x', link: 'https://x.com/repomix_ai' },
-      { icon: 'discord', link: 'https://discord.gg/wNYzTwZFku' },
-      { icon: 'github', link: githubUrl },
+    nav: [
+      { text: 'About', link: '/#about-codecompress' },
+      { text: 'Documentation', link: '/#how-it-works' },
+      { text: 'Help', link: '/#help' },
     ],
+    socialLinks: [{ icon: 'github', link: githubUrl }],
     footer: {
-      message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2024 Kazuki Yamada',
+      message: 'Academic Project',
+      copyright: 'Copyright © 2026 CodeCompress',
     },
     outline: [2, 3],
-    // Language selection
-    langMenuLabel: 'Languages',
+    langMenuLabel: '',
   },
 
   head: [
     // JSON-LD Structured Data
     ['script', { type: 'application/ld+json' }, JSON.stringify(jsonLd)],
-
-    // Favicon
-    ['link', { rel: 'icon', href: '/images/repomix-logo.svg' }],
 
     // Warm up the connection to Cloudflare Turnstile before the user clicks
     // pack so the script load + challenge round-trip don't add a cold-start
@@ -330,36 +265,14 @@ export const configShard = defineConfig({
     // OGP. `og:type` is emitted per-page from `createPageHead` (article for
     // docs, website for the home page) so we do not duplicate it here.
     ['meta', { property: 'og:site_name', content: siteName }],
-    ['meta', { property: 'og:image', content: ogImageUrl }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
-    ['meta', { name: 'twitter:domain', content: 'repomix.com' }],
-    ['meta', { name: 'twitter:image', content: ogImageUrl }],
-    ['meta', { name: 'thumbnail', content: ogImageUrl }],
+    ['meta', { name: 'twitter:domain', content: 'codecompress.example.com' }],
 
     // PWA
     ['meta', { name: 'theme-color', content: '#f97316' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
     ['meta', { name: 'apple-mobile-web-app-title', content: siteName }],
-    ['link', { rel: 'apple-touch-icon', href: '/images/pwa/repomix-192x192.png' }],
-    ['link', { rel: 'mask-icon', href: '/images/repomix-logo.svg', color: '#f97316' }],
-
-    // Google Analytics
-    [
-      'script',
-      {
-        async: 'true',
-        src: `https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsTag}`,
-      },
-    ],
-    [
-      'script',
-      {},
-      `window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '${googleAnalyticsTag}');`,
-    ],
   ],
 
   vite: {
@@ -380,7 +293,6 @@ export const configShard = defineConfig({
       ...llmstxt({
         workDir: 'en',
         domain: siteUrl,
-        ignoreFiles: ['guide/sponsors.md'],
       }),
       VitePWA({
         registerType: 'autoUpdate',

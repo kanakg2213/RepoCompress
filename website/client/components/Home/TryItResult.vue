@@ -3,7 +3,6 @@ import { computed, defineAsyncComponent, ref } from 'vue';
 import type { PackOptions } from '../../composables/usePackOptions';
 import type { TabType } from '../../types/ui';
 import type { DisplayProgressStage, FileInfo, PackResult } from '../api/client';
-import SupportMessage from './SupportMessage.vue';
 import TryItFileSelection from './TryItFileSelection.vue';
 import TryItLoading from './TryItLoading.vue';
 import TryItResultErrorContent from './TryItResultErrorContent.vue';
@@ -64,7 +63,6 @@ const handleRepack = (selectedFiles: FileInfo[]) => {
   <div class="result-viewer">
     <template v-if="loading && !result">
       <TryItLoading :stage="progressStage" :message="progressMessage" />
-      <SupportMessage />
     </template>
     <TryItResultErrorContent
       v-else-if="error"

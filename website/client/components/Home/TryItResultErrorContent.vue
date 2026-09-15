@@ -14,7 +14,7 @@ const props = defineProps<{
 const copied = ref(false);
 const commandWithRepo = computed(() => {
   if (!props.repositoryUrl) {
-    return 'npx repomix --remote <repository-url>';
+    return 'Use the repository workspace again with a valid repository URL.';
   }
   return generateCliCommand(props.repositoryUrl, props.packOptions);
 });
