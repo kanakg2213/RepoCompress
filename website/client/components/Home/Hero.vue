@@ -11,28 +11,13 @@
       </p>
       <p class="hero-note">Transform a software repository into a compact, structured, AI-ready context package for source analysis.</p>
     </div>
-    <div class="hero-art" aria-hidden="true">
-      <div class="hero-art__topline"><span>codecompress.context</span><span>ready</span></div>
-      <div class="hero-art__body">
-        <span class="hero-art__prompt">&gt;</span>
-        <span class="hero-art__command">compress --analyze</span>
-        <span class="hero-art__cursor"></span>
-      </div>
-      <div class="hero-art__files">
-        <span>src/</span><span>tests/</span><span>README.md</span><strong>+ 42 files</strong>
-      </div>
-    </div>
   </section>
 </template>
 
 <style scoped>
 .hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
-  gap: 64px;
-  align-items: center;
   text-align: left;
-  padding: 34px 20px 52px;
+  padding: 56px 20px 64px;
   max-width: 1120px;
   margin: 0 auto;
 }
@@ -100,81 +85,13 @@
   line-height: 1.6;
 }
 
-.hero-art {
-  overflow: hidden;
-  border: 1px solid var(--cc-ink);
-  border-radius: 4px;
-  background: var(--cc-ink);
-  color: #f9f4e9;
-  box-shadow: 10px 10px 0 var(--vp-c-brand-1);
-  animation: hero-rise 0.7s 0.12s ease both;
-}
-
-.hero-art__topline,
-.hero-art__files {
-  display: flex;
-  justify-content: space-between;
-  padding: 13px 16px;
-  border-bottom: 1px solid rgba(249, 244, 233, 0.2);
-  color: #bfc6be;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 11px;
-}
-
-.hero-art__topline span:last-child {
-  color: var(--cc-lime);
-}
-
-.hero-art__body {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  min-height: 150px;
-  padding: 24px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 22px;
-}
-
-.hero-art__prompt {
-  color: var(--cc-lime);
-}
-
-.hero-art__command {
-  color: #f9f4e9;
-}
-
-.hero-art__cursor {
-  width: 9px;
-  height: 24px;
-  background: var(--cc-orange);
-  animation: blink 1s steps(2) infinite;
-}
-
-.hero-art__files {
-  flex-wrap: wrap;
-  gap: 10px 18px;
-  border-top: 1px solid rgba(249, 244, 233, 0.2);
-  border-bottom: 0;
-}
-
-.hero-art__files strong {
-  color: var(--cc-lime);
-  font-weight: 400;
-}
-
 @keyframes hero-rise {
   from { opacity: 0; transform: translateY(14px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes blink {
-  50% { opacity: 0; }
-}
-
 @media (max-width: 768px) {
   .hero {
-    grid-template-columns: 1fr;
-    gap: 34px;
     padding-top: 20px;
   }
 
@@ -190,8 +107,5 @@
     font-size: 16px;
   }
 
-  .hero-art {
-    box-shadow: 6px 6px 0 var(--vp-c-brand-1);
-  }
 }
 </style>

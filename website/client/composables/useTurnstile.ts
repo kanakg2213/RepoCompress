@@ -62,6 +62,7 @@ export function useTurnstile() {
   // sitekey (action/hostname mismatch), so an actual production deploy that
   // somehow shipped the test sitekey would still 403 every pack.
   const siteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY ?? FALLBACK_TEST_SITE_KEY;
+  const isLocalDevelopment = import.meta.env.DEV && !import.meta.env.VITE_TURNSTILE_SITE_KEY;
 
   // Single-flight cache for the in-flight ensureWidget promise. Shared by
   // every code path that needs the widget (preMintToken, click-time mint),
@@ -146,6 +147,13 @@ export function useTurnstile() {
   // Run the widget challenge and return a fresh token. Internal primitive
   // wrapped by the token cache's preMintToken / takeToken.
   async function mintToken(): Promise<string> {
+    // The local API deliberately fails open when no Turnstile secret is set.
+    // Skip the external widget too, so local demos do not depend on the
+    // Cloudflare iframe being reachable from localhost.
+    if (isLocalDevelopment) {
+      return 'local-development-token';
+    }
+
     if (!containerEl.value) {
       throw new Error('Turnstile container element not registered');
     }
