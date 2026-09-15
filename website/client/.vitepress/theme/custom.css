@@ -1,0 +1,135 @@
+:root {
+  --vp-c-danger: #c0392b;
+  --repomix-ink: #1d211f;
+  --repomix-muted: #59605b;
+  --repomix-paper: #fbfaf7;
+  --repomix-line: #dedbd3;
+  --repomix-orange: #d9572b;
+  --repomix-lime: #b7ce63;
+}
+
+html.dark {
+  --repomix-ink: #f4f0e7;
+  --repomix-muted: #b4bbb3;
+  --repomix-paper: #151817;
+  --repomix-line: #3b443e;
+  --repomix-orange: #f07847;
+  --repomix-lime: #c9df76;
+}
+
+html {
+  background: var(--repomix-paper);
+}
+
+body {
+  font-family: 'Avenir Next', 'Helvetica Neue', sans-serif;
+  color: var(--repomix-ink);
+  background-color: var(--repomix-paper);
+  background-image: linear-gradient(rgba(29, 33, 31, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(29, 33, 31, 0.035) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+html.dark body {
+  background-image: linear-gradient(rgba(244, 240, 231, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 240, 231, 0.045) 1px, transparent 1px);
+}
+
+.VPNav {
+  background: rgba(251, 250, 247, 0.88);
+  backdrop-filter: blur(14px);
+}
+
+html.dark .VPNav {
+  background: rgba(21, 24, 23, 0.88);
+}
+
+.VPNavBar {
+  border-bottom: 1px solid var(--repomix-line);
+}
+
+.VPNavBarTitle .title {
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.VPNavBarTitle .logo {
+  width: 28px;
+  height: 28px;
+}
+
+.VPButton.brand {
+  border-radius: 4px;
+  box-shadow: 3px 3px 0 var(--repomix-ink);
+  font-weight: 700;
+}
+
+.VPButton.brand:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--repomix-ink);
+}
+
+.VPHome .VPHero {
+  padding-bottom: 40px;
+}
+
+.VPHome .VPHero .name {
+  letter-spacing: -0.06em;
+}
+
+.VPHome .VPHero .tagline {
+  color: var(--repomix-muted);
+}
+
+.VPHome .VPFeature {
+  border: 1px solid var(--repomix-line);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.52);
+  box-shadow: 4px 4px 0 rgba(29, 33, 31, 0.08);
+}
+
+html.dark .VPHome .VPFeature {
+  background: rgba(32, 37, 34, 0.72);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.24);
+}
+
+.VPHome .VPFeature:hover {
+  border-color: var(--repomix-orange);
+  transform: translateY(-3px);
+}
+
+.cli-section {
+  position: relative;
+  padding: 36px 0 12px;
+  border-top: 1px solid var(--repomix-line);
+}
+
+/* Place GitHub star button after nav menu (Join Discord) and before translations/social links */
+.VPNavBar .content-body > .translations,
+.VPNavBar .content-body > .appearance,
+.VPNavBar .content-body > .social-links,
+.VPNavBar .content-body > .extra,
+.VPNavBar .content-body > .hamburger {
+  order: 1;
+}
+
+.hero-description__accent {
+  color: var(--vp-c-brand-1);
+}
+.cli-section {
+  margin-bottom: 32px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cli-section h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 38px;
+  margin-bottom: 1.5rem;
+  color: var(--repomix-ink);
+  background: none;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: currentColor;
+}

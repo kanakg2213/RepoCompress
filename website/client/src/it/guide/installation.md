@@ -1,0 +1,77 @@
+---
+title: "Installazione"
+description: "Installa Repomix con npx, npm, Yarn, Bun, Homebrew, Docker, estensioni VS Code o browser e verifica la configurazione della CLI."
+---
+
+# Installazione
+
+## Utilizzo con npx (Nessuna installazione richiesta)
+
+```bash
+npx repomix@latest
+```
+
+## Installazione Globale
+
+::: code-group
+```bash [npm]
+npm install -g repomix
+```
+```bash [yarn]
+yarn global add repomix
+```
+```bash [pnpm]
+pnpm add -g repomix
+```
+```bash [bun]
+bun add -g repomix
+```
+```bash [Homebrew]
+brew install repomix
+```
+:::
+
+## Installazione con Docker
+
+Scarica ed esegui l'immagine Docker:
+
+```bash
+# Directory corrente
+docker run -v .:/app -it --rm ghcr.io/yamadashy/repomix
+# Directory specifica
+docker run -v .:/app -it --rm ghcr.io/yamadashy/repomix path/to/directory
+# Repository remoto
+docker run -v ./output:/app -it --rm ghcr.io/yamadashy/repomix --remote yamadashy/repomix
+```
+
+## Estensione VSCode
+
+Esegui Repomix direttamente in VSCode con l'estensione della community [Repomix Runner](https://marketplace.visualstudio.com/items?itemName=DorianMassoulier.repomix-runner).
+
+Funzionalità:
+- Impacchetta qualsiasi cartella in pochi clic
+- Scegli tra modalità file o contenuto per la copia
+- Pulizia automatica dei file di output
+- Compatibile con repomix.config.json
+
+Installala dal [Marketplace VSCode](https://marketplace.visualstudio.com/items?itemName=DorianMassoulier.repomix-runner).
+
+## Requisiti di Sistema
+
+- Node.js: ≥ 22.0.0
+- Git: Richiesto per l'elaborazione dei repository remoti
+
+## Verifica
+
+Dopo l'installazione, verifica che Repomix funzioni:
+
+```bash
+repomix --version
+repomix --help
+```
+
+## Risorse correlate
+
+- [Utilizzo Base](/it/guide/usage) - Scoprire come usare Repomix
+- [Configurazione](/it/guide/configuration) - Personalizzare Repomix secondo le tue esigenze
+- [Opzioni da Linea di Comando](/it/guide/command-line-options) - Riferimento completo della CLI
