@@ -15,6 +15,39 @@ import type { PackOptions } from '../../../types.js';
  * so a misspelled flag here type-checks silently. The tests around each caller
  * are what actually pin the flag reaching `runDefaultAction`.
  */
+
+/**
+ * Files that are always excluded regardless of user options.
+ * Lock files and generated artifacts are the biggest token-count offenders
+ * and carry zero AI-analysis value — a package-lock.json alone can be
+ * 76 000+ tokens (56% of total output).
+ */
+const DEFAULT_IGNORE_PATTERNS = [
+  // Dependency lock files — massive token count, no semantic value for AI
+  '**/package-lock.json',
+  '**/yarn.lock',
+  '**/pnpm-lock.yaml',
+  '**/bun.lockb',
+  '**/composer.lock',
+  '**/Gemfile.lock',
+  '**/poetry.lock',
+  '**/Cargo.lock',
+  // Dependency / build directories
+  '**/node_modules/**',
+  '**/.git/**',
+  'dist/**',
+  'build/**',
+  'coverage/**',
+  // Minified assets — unreadable noise
+  '**/*.min.js',
+  '**/*.min.css',
+  // Framework build caches
+  '**/.next/**',
+  '**/.nuxt/**',
+  '**/__pycache__/**',
+  '**/*.pyc',
+];
+
 export const buildUntrustedPackCliOptions = ({
   outputFilePath,
   format,
@@ -49,14 +82,17 @@ export const buildUntrustedPackCliOptions = ({
     }),
     topFilesLen: 10,
     include: options.includePatterns,
-    ignore: options.securityScan
-      ? ['**/node_modules/**', '**/.git/**', 'dist/**', 'build/**', 'coverage/**', options.ignorePatterns]
-          .filter(Boolean)
-          .join(',')
-      : options.ignorePatterns,
+    ignore: [
+      ...DEFAULT_IGNORE_PATTERNS,
+      // User-supplied patterns appended on top
+      options.ignorePatterns,
+    ]
+      .filter(Boolean)
+      .join(','),
     quiet: true, // Suppress CLI output; this runs inside a request handler
     // The packed tree is attacker-controlled. Loading a config from it runs the
     // config module in this process, before packing and before the security
     // check ever looks at file contents.
     skipLocalConfig: true,
   }) as CliOptions;
+
